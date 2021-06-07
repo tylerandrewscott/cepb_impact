@@ -51,7 +51,7 @@ require(tidyverse)
   geom_bar(aes(x = org,fill = fill,col = col,group = org2),lwd = 1,position = position_dodge()) +
   scale_fill_identity() + scale_color_identity() +
   theme_bw() + coord_flip() + theme(axis.text=element_text(size = 12)) +
-  scale_y_continuous('# publications') +
+  scale_y_continuous('# Q1 publications*') +
     annotate(geom = 'text',x = c(as.numeric(df_q1$org)[which(df_q1$org=='Davis')][1]-0.2,as.numeric(df_q1$org)[which(df_q1$org=='Davis')][1]+0.2), label = c('CEPB','all UCD (no PA school)'),
              y = counts$n[counts$f%in%c('CEPB','Davis')]/2,
              col = '#FFBF00')+
@@ -97,7 +97,7 @@ df_med$org <- forcats::fct_reorder(df_med$org,df_med$median_citation,.fun = max)
   annotate(geom = 'text',x = c(as.numeric(df_med$org)[which(df_med$org=='Davis')][1]-0.3,as.numeric(df_med$org)[which(df_med$org=='Davis')][1]+0.3), label = c('CEPB','all UCD'),y = c(17,16),
              col = '#022851')+
   scale_shape_manual(values = c(22,24),labels = c('all pubs.','Q1 pubs.'))+
-  scale_y_continuous(name = 'median citations/article',limits = c(0,20)) + 
+  scale_y_continuous(name = 'median citations/article*',limits = c(0,20)) + 
   theme(legend.title = element_blank(),axis.title.y= element_blank(),
         legend.position = c(0.8,0.15),axis.text= element_text(size = 12)) + 
   ggtitle('Median citations/article') + 
